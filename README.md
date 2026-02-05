@@ -83,3 +83,31 @@ plt.show()
 # Adding a title
 ax.set_title('Weather in Seattle')
 plt.show()
+
+# Plot Seattle data, setting data appearance
+ax.plot(seattle_weather["MONTH"], 
+        seattle_weather["MLY-PRCP-NORMAL"], 
+        marker = 'o', linestyle = '--', color = 'b')
+
+# Plot Austin data, setting data appearance
+ax.plot(austin_weather["MONTH"], 
+        austin_weather["MLY-PRCP-NORMAL"], 
+        marker = 'v', linestyle = '--',color = 'r')
+
+# Call show to display the resulting plot
+plt.show()
+
+ax.plot(seattle_weather["MONTH"], seattle_weather["MLY-PRCP-NORMAL"])
+ax.plot(austin_weather["MONTH"], austin_weather["MLY-PRCP-NORMAL"])
+
+# Customize the x-axis label
+ax.set_xlabel('Time (months)')
+
+# Customize the y-axis label
+ax.set_ylabel('Precipitation (inches)')
+
+# Add the title
+ax.set_title('Weather patterns in Austin and Seattle')
+
+# Display the figure
+plt.show()
