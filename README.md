@@ -111,3 +111,41 @@ ax.set_title('Weather patterns in Austin and Seattle')
 
 # Display the figure
 plt.show()
+
+#### Small Multiples ###
+# in some cases, adding too much data can make it too busy
+# to overcome this, we can use small multiples
+# also called subplots
+
+# Small multiples with plt.subplots
+fig, ax = plt.subplots()
+fig, ax = plt.subplots(3, 2) # 3 rows and 2 columns
+plt.show()
+# to add data, we would have to index into this object and call the plot method on an element of the array
+ax.shape # (3,2)
+ax[0, 0].plot(seattle_weather['MONTH'],
+              seattle_weather['MLY-PRCP-NORMAL'],
+              color = 'b')
+plt.show()
+
+# Subplots with data
+fig, ax = plt.subplots(2, 1)
+ax[0].plot(seattle_weather['MONTH'], seattle_weather['MLY-PRCP-NORMAL'],
+           color = 'b')
+ax[0].plot(seattle_weather['MONTH'], seattle_weather['MLY-PRCP-25PCTL'],
+           linestyle = '--', color = 'b')
+ax[0].plot(seattle_weather['MONTH'], seattle_weather['MLY-PRCP-75PCTL'],
+           linestyle = '--', color = 'b')
+ax[1].plot(austin_weather['MONTH'], austin_weather['MLY-PRCP-NORMAL'],
+           color = 'r')
+ax[1].plot(austin_weather['MONTH'], austin_weather['MLY-PRCP-25PCTL'],
+           linestyle = '--', color = 'r')
+ax[1].plot(austin_weather['MONTH'], austin_weather['MLY-PRCP-75PCTL'],
+           linestyle = '--', color = 'r')
+ax[0].set_ylabel('Precipitation (inches)')
+ax[1].set_ylabel('Precipitation (inches)')
+ax[1].set_xlabel('Time (months)')
+plt.show()
+
+# sharing the y-axis range
+fig, ax = plt.subplots(2, 1, sharey=True)
