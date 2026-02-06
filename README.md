@@ -249,3 +249,40 @@ ax.plot(seventies.index, seventies["co2"])
 
 # Show the figure
 plt.show()
+
+#### Plotting time-series with different variables ####
+# to relate two time-series that coincide in terms of their times, but record the values of different variables, we might want to plot them on the same axis
+
+# plotting two time-series together
+import pandas as pd
+climate_change = pd.read_csv('climate_change.csv',
+                              parse_dates=['date'],
+                              index_col = 'date')
+
+# as before, we can create a figure and axes and add the data from one variable to the plot
+# we can add the data from the other variable to the plot
+import maplotlib.pyplot as plt
+fig, ax = plt.subplots()
+ax.plot(climate_change.index, climate_change['co2'])
+ax.plot(climate_change.index, climate_change['relative_temp'])
+ax.set_xlabel('Time')
+ax.set_ylabel('CO2 (ppm)/ Relative temperature')
+plt.show()
+
+# using twin axies to align scales
+fig, ax = plt.subplots()
+ax.plot(climate_change.index, climate_change['co2'])
+ax.set_xlabel('Time')
+ax.set_ylabel('C02 (ppm)')
+ax2 = ax.twinx() # the two axes share the same x-axis, but the y-axes are separate
+ax2.plot(climate_change.index, climate_change['relative_temp])
+ax2.set_ylabel('Relative temperature (Celsius)')
+plt.show()
+
+# separating variables by color
+fig, ax = plt.subplots()
+ax.plot(climate_change.index, climate_change['co2'], color = 'blue')
+ax.set_xlabel('Time')
+ax.set_ylabel('C02 (ppm)', color = 'blue')
+ax2 = ax.twinx()
+time 2:44
