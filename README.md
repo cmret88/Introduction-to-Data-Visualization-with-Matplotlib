@@ -178,5 +178,74 @@ ax[0].plot(seattle_weather['MONTH'], seattle_weather['MLY-PRCP-75PCTL'], color =
 ax[1].plot(austin_weather['MONTH'], austin_weather['MLY-PRCP-NORMAL'], color = 'r')
 ax[1].plot(austin_weather['MONTH'], austin_weather['MLY-PRCP-25PCTL'], color = 'r', linestyle = '--')
 ax[1].plot(austin_weather['MONTH'], austin_weather['MLY-PRCP-75PCTL'], color = 'r', linestyle = '--')
+plt.show()
 
+#### Plotting time-series data ####
+# many kinds of data are ordered in time-series
+# we use pandas to recognize data as a time series
+climate_change.index
+# has datetime data type; Matplotlib recognize this as a variable that represents time
+# the other two columns in this example are stored as regular columns of the DataFrame with a floating point data-type
+# this will allow us to calculate them as continuous variables
+# few points are NaN, or are missing
+
+# Plotting time-series data
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+ax.plot(climate_change.index, climate_change['co2'])
+ax.set_xlabel('Time')
+ax.set_ylabel('CO2 (ppm)')
+plt.show()
+
+# Zooming in on a decade
+# we are slicing the period we are interested in
+sixties = climate_change['1960-01-01':'1969-12-31']
+
+fix, ax = plt.subplots()
+ax.plot(sixties.index, sixties['co2'])
+ax.set_xlabel('Time')
+ax.set_ylabel('CO2 (ppm)')
+plt.show()
+
+# Zooming in on one year
+sixty_nine = climate_change['1969-01-01':'1969-12-31']
+fig, ax = plt.subplots()
+ax.plot(sixty_nine.index, sixty_nine['co@'])
+ax.set_xlabel('Time')
+ax.set_ylabel('CO2 (ppm)')
+plt.show()
+
+# Import pandas as pd
+import pandas as pd
+
+# Read the data from file using read_csv
+climate_change = pd.read_csv('climate_change.csv', parse_dates = ['date'], index_col = 'date')
+
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+
+# Add the time-series for "relative_temp" to the plot
+ax.plot(climate_change.index, climate_change['relative_temp'])
+
+# Set the x-axis label
+ax.set_xlabel('Time')
+
+# Set the y-axis label
+ax.set_ylabel('Relative temperature (Celsius)')
+
+# Show the figure
+plt.show()
+
+import matplotlib.pyplot as plt
+
+# Use plt.subplots to create fig and ax
+fig, ax = plt.subplots()
+
+# Create variable seventies with data from "1970-01-01" to "1979-12-31"
+seventies = climate_change['1970-01-01':'1979-12-31']
+
+# Add the time-series for "co2" data from seventies to the plot
+ax.plot(seventies.index, seventies["co2"])
+
+# Show the figure
 plt.show()
