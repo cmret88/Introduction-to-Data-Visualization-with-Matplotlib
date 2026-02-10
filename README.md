@@ -285,4 +285,40 @@ ax.plot(climate_change.index, climate_change['co2'], color = 'blue')
 ax.set_xlabel('Time')
 ax.set_ylabel('C02 (ppm)', color = 'blue')
 ax2 = ax.twinx()
-time 2:44
+ax2.plot(climate_change.index, climate_change['relative_temp'], color = 'red')
+ax2.set_ylabel('Relative temperature (Celsius)', color = 'red')
+plt.show()
+
+# coloring the ticks
+fig, ax = plt.subplots()
+ax.plot(climate_change.index, 
+        climate_change['co2'], 
+        color = 'blue')
+ax.set_xlabel('Time')
+ax.set_ylabel('C02 (ppm)', color = 'blue')
+ax.tick_params('y', colors = 'blue')
+ax2 = ax.twinx()
+ax2.plot(climate_change.index, 
+         climate_change['relative_temp'], 
+         color = 'red')
+ax2.tick_params('y', colors = 'red')
+ax2.set_ylabel('Relative temperature (Celsius)', 
+                color = 'red')
+plt.show()
+
+# a function that plots time-series
+def plot_timeseries(axes, x,y, color, xlabel, ylabel):
+  axes.plot(x,y,color=color)
+  axes.set_xlabel(xlabel)
+  axes.set_ylabel(ylabel, color = color)
+  axes.tick_params('y', colors = color)
+
+# using our function
+fix, ax = plt.subplots()
+plot_timeseries(ax, climate_change.index, climate_change['co2'],
+                'blue','Time','C02 (ppm)')
+ax2 = ax.twinx()
+plot_timeseries(ax2, climate_change.index, 
+                climate_change['relative_temp'],
+                'red','Time','Relative temperature (Celsius)')
+plt.show()
