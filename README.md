@@ -369,3 +369,20 @@ plot_timeseries(ax, climate_change.index, climate_change['relative_temp'], 'red'
 plt.show()
 
 #### Annotating time-series data ####
+# Annotations are small pieces of text that refer to a particular part of the visualization
+fig, ax = plt.subplots()
+plot_timeseries(ax, climate_change.index, climate_change['co2'], 'blue', 'Time', 'CO2 (ppm)')
+ax2 = ax.twinx()
+plot_timeseries(ax2, climate_change.index, climate_change['relative_temp'], 'red', 'Time', 'Relative temperature (Celsius)')
+ax2.annotate('>1 degree', xy=(pd.Timestamp('2015-10-06'), 1))
+
+# Positioning the text
+ax2.annotate('>1 degree',
+             xy=(pd.Timestamp('2015-10-06'), 1),
+             xytext=(pd.Timestamp('2008-10-06'), -0.2))
+
+# Adding arrows to annotation
+ax2.annotate('>1 degree',
+             xy=(pd.Timestamp('2015-10-06'), 1),
+             yxtext=(pd.Timestamp
+             
