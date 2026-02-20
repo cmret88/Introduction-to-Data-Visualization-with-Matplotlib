@@ -423,3 +423,30 @@ ax2.annotate('>1 degree',
               arrowprops={'arrowstyle':'->','color':'gray'})
 
 plt.show()
+
+#### Quantitative comparisons: bar charts ####
+medals = pd.read_csv('medals_by_country_2016.csv', index_col=0)
+fig, ax = plt.subplots()
+ax.bar(medals.index, medals['Gold])
+plt.show()
+# this chart shows a bar for ever row in the "Gold" column of the DataFrame where the height of the bar reps the # of that row
+# the label of the x axis ticks correspond to the index of the DataFrame, contains names of different countries in the data table
+# these names are long, so they overlap
+# how to fix
+
+# Interlude: rotate the tick labels
+fig, ax = plt.subplots()
+ax.bar(medals.index, medals["Gold"])
+ax.set_xticklabels(medals.index, rotation=90)
+ax.set_ylabel("Number of medals")
+
+# Visualizing other medals
+fig, ax = plt.subplots
+ax.bar(medals.index, medals['Gold'])
+ax.bar(medals.index, medals['Silver']), bottom = medals['Gold'])
+ax.bar(medals.index, medals['Bronze']),
+        bottom = medals['Gold'] + medals['Silver'])
+ax.set_xticklabels(medals.index, rotation=90)
+ax.set_ylabel('Number of medals')
+plt.show()
+
