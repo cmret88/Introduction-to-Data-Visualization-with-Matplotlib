@@ -557,3 +557,35 @@ ax.legend()
 plt.show()
 
 #### Statistical Plotting ####
+# this is a set of methods of using visualization to make comparisons
+# adding error bars to bar charts
+# error bars instead summarize the distribution of the data in one number, like the STD
+# Example - Heights of medalists
+fig, ax = plt.subplots()
+ax.bar('Rowing',
+        mens_rowing['Height'].mean(),
+        yerr=mens_rowing['Height'].std())
+ax.bar('Gymnastics',
+        mens_gymnastics['Height'].mean(),
+        yerr=mens_gymnastics['Height'].std())
+ax.set_ylabel('Height'(cm)')
+plt.show()
+
+# Adding error bars to plots
+fig, ax = plt.subplots()
+ax.errorbar(seattle_weather['MONTH'],
+            seattle_weather['MLY-TAVG-NORMAL'],
+            yerr = seattle_weather['MLY-TAVG-STDDEV'])
+ax.errorbar(austin_weather['MONTH'],
+            austin_weather['MLY-TAVG-NORMAL'],
+            yerr = austin_weather['MLY-TAVG-STDDEV'])
+ax.set_ylabel('Temperature (Fahrenheit)')
+plt.show()
+
+# adding boxplots
+fig, ax = plt.subplots()
+ax.boxplot([mens_rowing['Height'],
+            mens_gymnastics['Height']])
+ax.set_xticklabels(['Rowing','Gymnastics'])
+ax.set_ylabel('Height(cm)')
+plt.show()
