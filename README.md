@@ -464,3 +464,60 @@ ax.bar(medals.index, medals['Bronze'], label='Bronze',
 ax.legend()
 
 plt.show()
+
+#### Quantitative Comparisons: Histograms ####
+
+# a bar chart
+fig, ax = plt.subplots()
+ax.bar('Rowing', mens_rowing['Height'].mean())
+ax.bar('Gymnastics', mens_gymnastics['Height'].mean())
+ax.set_ylabel('Height (cm)')
+plt.show()
+
+# a histogram would have shown a full distribution within each variable
+fig, ax = plt.subplots()
+ax.hist(mens_rowing['Height'])
+ax.hist(mens_gymnastics['Height'])
+ax.set_xlabel('Height (cm)')
+ax.set_ylabel('# of observations')
+plt.show()
+
+# labels are needed
+fig, ax = plt.subplots()
+ax.hist(mens_rowing['Height'], label = 'Rowing')
+ax.hist(mens_gymnastics['Height'], label = 'Gymnastics')
+ax.set_xlabel('Height (cm)')
+ax.set_ylabel('# of observations')
+ax.legend()
+plt.show()
+
+# customizing histograms: setting the # of bins
+fig, ax = plt.subplots()
+ax.hist(mens_rowing['Height'], label = 'Rowing', bins = 5)
+ax.hist(mens_gymnastics['Height'], label = 'Gymnastics', bins = 5)
+ax.set_xlabel('Height (cm)')
+ax.set_ylabel('# of observations')
+ax.legend()
+plt.show()
+
+# customizing histograms: setting bin boundaries
+ax.hist(mens_rowing['Height'], label = 'Rowing', 
+        bins = [150, 160, 170, 180, 190, 200, 210])
+ax.hist(mens_gymnastics['Height'], label = 'Gymnastics', 
+        bins = [150, 160, 170, 180, 190, 200, 210])
+ax.set_xlabel('Height (cm)')
+ax.set_ylabel('# of observations')
+ax.legend()
+plt.show()
+
+# customizing histograms: transparency
+ax.hist(mens_rowing['Height'], label = 'Rowing', 
+        bins = [150, 160, 170, 180, 190, 200, 210]
+        histtype = 'step')
+ax.hist(mens_gymnastics['Height'], label = 'Gymnastics', 
+        bins = [150, 160, 170, 180, 190, 200, 210],
+        histtype = 'step')
+ax.set_xlabel('Height (cm)')
+ax.set_ylabel('# of observations')
+ax.legend()
+plt.show()
