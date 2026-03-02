@@ -733,3 +733,4 @@ plt.style.use('seaborn-colorblind')
 # if you think that someone will want to print your figure, use less ink (avoid colored backgrounds)
 # if it will be printed in black-and-white, use the 'grayscale' style
 
+#### Sharing your visualizations with others ####
