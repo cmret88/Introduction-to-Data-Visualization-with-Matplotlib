@@ -698,3 +698,38 @@ ax.set_ylabel('Relative temperature (C)')
 plt.show()
 
 #### Preparing your figures to share with others ####
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots()
+ax.plot(seattle_weather['MONTH'], seattle_weather['MLY-TAVG-NORMAL'])
+ax.plot(austin_weather['MONTH'], seattle_weather['MLY-TAVG-NORMAL'])
+ax.set_xlabel('Time (months)')
+ax.set_ylabel('average temperature (Farenheit degrees)')
+plt.show()
+
+# Choosing a style
+plt.style.use('ggplot')
+fig, ax = plt.subplots()
+ax.plot(seattle_weather['MONTH'], seattle_weather['MLY-TAVG-NORMAL'])
+ax.plot(austin_weather['MONTH'], seattle_weather['MLY-TAVG-NORMAL'])
+ax.set_xlabel('Time (months)')
+ax.set_ylabel('average temperature (Farenheit degrees)')
+plt.show() 
+
+# Back to default
+plt.style.use('default')
+
+# Matplotlib contains different visualization styles
+# The 'bmh' style
+plt.style.use('bmh')
+
+# The seaborn style
+plt.style.use('seaborn-colorblind')
+
+# Guidelines for choosing plotting style
+# depends on your goal
+# dark backgrounds are usually less visible and not recommended generally
+# if color is important, consider choosing coloblind-friendly options
+# 'seaborn-coloblind' or 'tableau-colorblind10'
+# if you think that someone will want to print your figure, use less ink (avoid colored backgrounds)
+# if it will be printed in black-and-white, use the 'grayscale' style
+
