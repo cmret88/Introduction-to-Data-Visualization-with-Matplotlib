@@ -659,3 +659,13 @@ ax.legend()
 ax.set_xlabel('CO2 (ppm)')
 ax.set_ylabel('Relative temperature (Celsius)')
 plt.show()
+
+# Encoding a third variable by color
+# if we enter the index as input to the c key-word argument, this variable will get encoded as color
+# note that this is not the color key-word argument that we used before, but instead is just the letter c
+fig, ax = plt.subplots()
+ax.scatter(climate_change['Co2'], climate_change['relative_temp'],
+           c=climate_change.index)
+ax.set_xlabel('CO2 (ppm)')
+ax.set_ylabel('Relative temperature (Celsius)')
+plt.show()
