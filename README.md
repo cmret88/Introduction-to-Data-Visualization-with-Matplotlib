@@ -605,6 +605,20 @@ plt.show()
 
 fig, ax = plt.subplots()
 
+fig, ax = plt.subplots()
+
+# Add a boxplot for the "Height" column in the DataFrames
+ax.boxplot([mens_rowing['Height'],
+            mens_gymnastics['Height']])
+
+# Add x-axis tick labels:
+ax.set_xticklabels(['Rowing','Gymnastics'])
+
+# Add a y-axis label
+ax.set_ylabel('Height (cm)')
+
+plt.show()
+
 # Add Seattle temperature data in each month with error bars
 ax.errorbar(seattle_weather['MONTH'], 
             seattle_weather['MLY-TAVG-NORMAL'], 
@@ -618,4 +632,30 @@ ax.errorbar(austin_weather['MONTH'],
 # Set the y-axis label
 ax.set_ylabel('Temperature (Fahrenheit)')
 
+plt.show()
+
+#### Quantitative comparisons: scatter plots ####
+# bar charts show us the values of one variable across different conditions, such as different countries
+# what is you want to compare the values of different variables across observations?
+# this is sometimes called a bi-variate comparison, because it involves the values of two different variables
+
+# Introducing scatter plots
+fig, ax = plt.subplots()
+ax.scatter(climate_change['Co2'], climate_change['relative_temp'])
+ax.set_xlabel('CO2 (ppm)')
+ax.set_ylabel('Relative temperature (Celsius)')
+plt.show()
+
+# Customizing scatter plots
+eighties = climate_change['1980-01-01':'1989-12-31']
+nineties = climate_change['1990-01-01':'1999-12-31']
+fig, ax = plt.subplots()
+ax.scatter(eighties['co2'], eighties['relative_temp'],
+           color='red', label='eighties')
+ax.scatter(nineties['co2'], nineties['relative_temp'],
+           color='blue', label='nineties')
+ax.legend()
+
+ax.set_xlabel('CO2 (ppm)')
+ax.set_ylabel('Relative temperature (Celsius)')
 plt.show()
