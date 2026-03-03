@@ -771,3 +771,28 @@ fig.savefig('gold_medals.png', dpi=300)
 # for example, you can set your figure to be wide and short, or long and narrow
 fig.set_size_inches([5,3]) # wide and short
 fig.set_size_inches([3,5]) # long and narrow
+
+#### Automating figures from data ####
+# matplotlib can flexibly adapt to the inputs that are provided
+# why automate?:
+# ease and speed
+# flexibility
+# robustness
+# reproducibility
+
+# How many different kinds of data?
+summer_2016_medals['Sport']
+
+# Getting unique values of a column
+sports = summer_2016_medals['Sport'].unique()
+print(sports)
+
+# Bar-chart of heights for all sports
+fig, ax = plt.subplots()
+for sport in sports:
+ sport_df = summer_2016_medals['summer_2016_medals['Sports'] == sport]
+ ax.bar(sport, sport_df['Height'].mean(),
+        yerr=sport_df['Height'].std())
+ax.set_ylabel('Height (cm)')
+ax.set_xticklabel(sports, rotation=90)
+plt.show()
