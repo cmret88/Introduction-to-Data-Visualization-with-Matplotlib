@@ -754,6 +754,20 @@ ls # we can call the unix ls function, which gives us a listing of the files in 
 # provides lossless compression of your image
 # means the image will retain high quality, but will also take up relatively large amounts of diskspace or bandwidth
 # if the image is going to be on a website, for ex, you might want to choose the jpg format used here b/c of it uses lossy compression, and can be used to create figures that take up less diskspace and less bandwidth
-# you can also control how small the resulting file will be, and the degree of loss of quality, by setting the quality key-word argument
+# you can also control how small the resulting file will be, and the degree of loss of quality, by setting the quality key-word argument (will be a # between 1 and 100)
 fig.savefig('gold_medals.jpg', quality=50)
 fig.savefig('gold_medals.jpg') 
+fig.savefig('gold_medals.svg') # choosing this format will produce a vector graphics file where different elements can be edited in detail by advanced graphics software, such as Gimp or Adobe Illustrator
+
+# Resolution
+# another key-word that you can use to control the quality of the images that you produce is the dpi key-word argument
+fig.savefig('gold_medals.png', dpi=300)
+
+# Size
+# you also might want to control is the size of the figure
+# to control this, the Figure object also has a function called set-underscore-size-underscore-inches
+# this function takes a sequence of #s, the 1st # sets the width of the figure on the page and the 2nd # sets the height of the figure
+# so setting the size would also determine the aspect ratio of the figure
+# for example, you can set your figure to be wide and short, or long and narrow
+fig.set_size_inches([5,3]) # wide and short
+fig.set_size_inches([3,5]) # long and narrow
