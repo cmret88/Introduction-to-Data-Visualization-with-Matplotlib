@@ -734,3 +734,26 @@ plt.style.use('seaborn-colorblind')
 # if it will be printed in black-and-white, use the 'grayscale' style
 
 #### Sharing your visualizations with others ####
+# a figure to share
+fig, ax = plt.subplots()
+ax.bar(medals.index, medals['Gold'])
+ax.set_xticklabels(medals.index, rotation=90)
+ax.set_ylabel('Number of medals')
+plt.show()
+
+# saving the figure to file
+fig, ax = plt.subplots()
+ax.bar(medals.index, medals['Gold'])
+ax.set_xticklabels(medals.index, rotation=90)
+ax.set_ylabel('Number of medals')
+plt.show()
+fig.savefig('gold_medals.png')
+ls # we can call the unix ls function, which gives us a listing of the files in the present working directory
+
+# different file formats
+# provides lossless compression of your image
+# means the image will retain high quality, but will also take up relatively large amounts of diskspace or bandwidth
+# if the image is going to be on a website, for ex, you might want to choose the jpg format used here b/c of it uses lossy compression, and can be used to create figures that take up less diskspace and less bandwidth
+# you can also control how small the resulting file will be, and the degree of loss of quality, by setting the quality key-word argument
+fig.savefig('gold_medals.jpg', quality=50)
+fig.savefig('gold_medals.jpg') 
